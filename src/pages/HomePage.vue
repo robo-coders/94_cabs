@@ -21,33 +21,6 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
         <RouterLink class="btn btn-outline-light" to="/book-online">Book online</RouterLink>
         <RouterLink class="btn btn-outline-light" to="/services">View services</RouterLink>
       </div>
-
-      <template #stats>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <strong>24/7</strong>
-            <span>Available day and night for bookings</span>
-          </div>
-          <div class="hero-stat">
-            <strong>Newer fleet</strong>
-            <span>Sedans, SUVs, and vans kept ride-ready</span>
-          </div>
-          <div class="hero-stat">
-            <strong>Easy booking</strong>
-            <span>Phone, website &amp; application</span>
-          </div>
-        </div>
-      </template>
-
-      <template #aside>
-        <h3>Popular ride requests</h3>
-        <ul>
-          <li>Airport and long distance transportation</li>
-          <li>Business and account based travel</li>
-          <li>Senior and non-emergency medical trips</li>
-          <li>Wheelchair-accessible vans and family travel</li>
-        </ul>
-      </template>
     </PageBanner>
 
     <section class="home-segment section-surface">
@@ -192,101 +165,73 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
       </div>
     </section>
 
-    <section class="home-segment section-dark">
-      <div class="container">
-        <RevealOnScroll>
-          <div class="section-head section-head--center">
-            <p class="eyebrow">SERVICE PROMISE</p>
-            <h2>Striving to provide the best taxi service round the clock</h2>
-            <p class="section-lede">
-              94 Cabs Red Deer is built around responsive dispatch, dependable vehicles, and practical local service for
-              the people who rely on transportation every day.
-            </p>
-          </div>
-        </RevealOnScroll>
-        <RevealOnScroll>
-          <div class="split-content">
-            <div class="media-frame" style="max-height: 360px">
-              <img :src="photoSet.nightCity" alt="Reliable taxi service available day and night in Red Deer" loading="lazy" />
-            </div>
-            <div>
-              <h3 style="color: #fff">Built for everyday travel and scheduled trips</h3>
-              <p style="color: #b4c9bc; margin-top: 0.65rem">
-                Riders count on 94 Cabs Red Deer for early airport departures, local shopping trips, evening pickups,
-                pre-arranged bookings, and transportation that fits real daily schedules.
-              </p>
-              <p style="color: #b4c9bc; margin-top: 0.75rem">
-                If you are travelling for work, need extra space, or want to plan ahead for a medical or senior trip,
-                dispatch can help guide the booking to the right service.
-              </p>
-              <div class="cta-row" style="margin-top: 1rem">
-                <RouterLink class="btn btn-primary" to="/contact-us">Talk to dispatch</RouterLink>
-                <a class="btn btn-outline-light" :href="companyInfo.phoneLink">Call now</a>
-              </div>
-            </div>
-          </div>
-        </RevealOnScroll>
-      </div>
-    </section>
-
-    <section class="home-segment">
-      <div class="container quote-band">
-        <RevealOnScroll>
-          <article>
-            <p class="quote">
-              “Clean vehicle, courteous driver, and a smooth pickup process from booking to drop-off.”
-            </p>
-            <p class="quote-author">Local rider</p>
-          </article>
-        </RevealOnScroll>
-        <RevealOnScroll>
-          <article>
-            <p class="quote">
-              “Used 94 Cabs Red Deer for an early airport run and everything was on time, simple and stress free.”
-            </p>
-            <p class="quote-author">Frequent traveller</p>
-          </article>
-        </RevealOnScroll>
-      </div>
-    </section>
-
+    <!-- ── Fare + Contact section ───────────────────────────────────────── -->
     <section class="home-segment section-surface">
       <div class="container fare-contact-grid">
         <RevealOnScroll>
           <FarePanel />
         </RevealOnScroll>
-        <RevealOnScroll>
-          <article class="quick-contact hover-lift">
-            <p class="eyebrow" style="color: var(--brand-deep)">DIRECT LINE</p>
-            <h3>Flexible taxi rates and 24/7 dispatch support</h3>
-            <p>
-              We answer calls as Taxi Dispatch Services and help riders arrange bookings quickly for city trips,
-              scheduled travel, and special transportation needs.
-            </p>
-            <p>
-              Call anytime for quick bookings, fare questions or help choosing the right service for your trip.
-            </p>
-            <a :href="companyInfo.phoneLink">{{ companyInfo.phoneDisplay }}</a>
-            <a :href="`mailto:${companyInfo.email}`">{{ companyInfo.email }}</a>
-            <p>{{ companyInfo.primaryAddress }}</p>
-            <RouterLink class="btn btn-dark" to="/contact-us">Contact &amp; directions </RouterLink>
-          </article>
-        </RevealOnScroll>
-      </div>
-    </section>
 
-    <section class="home-segment">
-      <div class="container cta-panel">
         <RevealOnScroll>
-          <h2>Book your next ride with confidence</h2>
-          <p>
-            Whether you are heading across Red Deer, arranging an airport trip, or planning a pickup in advance, 94
-            Cabs Red Deer is ready to help day or night.
-          </p>
-          <div class="cta-row">
-            <a class="btn btn-primary" :href="companyInfo.phoneLink">Call {{ companyInfo.phoneDisplay }}</a>
-            <RouterLink class="btn btn-outline-light" to="/book-online">Book online</RouterLink>
-          </div>
+          <article class="quick-contact">
+
+            <!-- Zone 1: Trust signal trio (dark band) -->
+            <div class="quick-contact__trust" role="list" aria-label="Service highlights">
+              <div class="trust-item" role="listitem">
+                <span class="trust-item__value">24/7</span>
+                <span class="trust-item__label">Dispatch<br>support</span>
+              </div>
+              <div class="trust-item" role="listitem">
+                <span class="trust-item__value">Fast</span>
+                <span class="trust-item__label">Booking<br>response</span>
+              </div>
+              <div class="trust-item" role="listitem">
+                <span class="trust-item__value">Online</span>
+                <span class="trust-item__label">Book from<br>anywhere</span>
+              </div>
+            </div>
+
+            <!-- Zone 3: Contact rows -->
+            <div class="quick-contact__contact">
+              <a class="contact-row" :href="companyInfo.phoneLink">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.32 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/>
+                  </svg>
+                </span>
+                <span>{{ companyInfo.phoneDisplay }}</span>
+              </a>
+              <a class="contact-row" :href="`mailto:${companyInfo.email}`">
+                <span class="contact-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                </span>
+                <span>{{ companyInfo.email }}</span>
+              </a>
+            </div>
+
+            <!-- Zone 4: CTAs -->
+            <div class="quick-contact__actions">
+              <a class="btn-call" :href="companyInfo.phoneLink">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.32 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.49 5.49l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/>
+                </svg>
+                Call dispatch — {{ companyInfo.phoneDisplay }}
+              </a>
+              <RouterLink class="btn-book" to="/book-online">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Book online
+              </RouterLink>
+            </div>
+
+          </article>
         </RevealOnScroll>
       </div>
     </section>
@@ -294,6 +239,10 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
 </template>
 
 <style scoped>
+
+/* ─────────────────────────────────────────────
+   Service section
+───────────────────────────────────────────── */
 .service-balance-section {
   align-items: start;
   gap: clamp(2rem, 4vw, 4.5rem);
@@ -335,6 +284,9 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   line-height: 1.6;
 }
 
+/* ─────────────────────────────────────────────
+   Media stack
+───────────────────────────────────────────── */
 .media-stack--balanced {
   display: grid;
   gap: 1.25rem;
@@ -374,38 +326,9 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   min-height: 220px;
 }
 
-.media-card-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.media-card-copy--stacked {
-  padding: 1.35rem 1.35rem 1.45rem;
-}
-
-.media-card-copy .media-card-label {
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--brand-green);
-}
-
-.media-card-copy h3 {
-  margin: 0 0 0.55rem;
-  font-size: 1.2rem;
-  line-height: 1.2;
-}
-
-.media-card-copy p {
-  margin: 0;
-  color: rgba(15, 23, 32, 0.72);
-  line-height: 1.65;
-}
-
+/* ─────────────────────────────────────────────
+   Booking editorial
+───────────────────────────────────────────── */
 .booking-editorial {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.82fr);
@@ -570,18 +493,193 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   transform: translateX(3px);
 }
 
+/* ─────────────────────────────────────────────
+   Fare + Contact grid — equal height columns
+───────────────────────────────────────────── */
+.fare-contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  gap: clamp(1.25rem, 2vw, 2rem);
+  align-items: stretch;
+}
+
+/* RevealOnScroll is a plain div — force it to stretch */
+.fare-contact-grid > * {
+  display: flex !important;
+  flex-direction: column;
+}
+
+/* Cards fill the full column height */
+.fare-contact-grid > * > * {
+  flex: 1;
+  height: 100%;
+}
+
+/* ─────────────────────────────────────────────
+   Quick-contact card
+───────────────────────────────────────────── */
+.quick-contact {
+  background: #fff;
+  border-radius: 16px;
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contact zone grows to fill leftover space so CTAs pin to bottom */
+.quick-contact__contact {
+  flex: 1;
+}
+
+/* Zone 1 — trust trio with dark band */
+.quick-contact__trust {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.07);
+  background-color: #1c2b1a;
+}
+
+.trust-item {
+  background: transparent;
+  padding: 22px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trust-item + .trust-item {
+  border-left: 0.5px solid rgba(255, 255, 255, 0.1);
+}
+
+.trust-item__value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f5f5f3;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.trust-item__label {
+  font-size: 11.5px;
+  color: rgba(245, 245, 243, 0.5);
+  line-height: 1.3;
+}
+
+/* Zone 3 — contact rows, grows to fill leftover height */
+.quick-contact__contact {
+  flex: 1;
+  padding: 16px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.07);
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.contact-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-icon svg {
+  width: 15px;
+  height: 15px;
+  color: var(--brand-deep, #4a7c3f);
+}
+
+.contact-row span:last-child {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  transition: color 0.15s;
+}
+
+.contact-row:hover span:last-child {
+  color: var(--brand-deep, #4a7c3f);
+}
+
+/* Zone 4 — CTA buttons */
+.quick-contact__actions {
+  padding: 16px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--brand-deep, #4a7c3f);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: background 0.15s;
+}
+
+.btn-call svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.btn-call:hover {
+  background: #3d6b34;
+}
+
+.btn-book {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: transparent;
+  color: #374151;
+  font-size: 14.5px;
+  font-weight: 500;
+  padding: 13px 20px;
+  border-radius: 10px;
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn-book svg {
+  width: 15px;
+  height: 15px;
+}
+
+.btn-book:hover {
+  background: #f9fafb;
+  border-color: rgba(0, 0, 0, 0.22);
+}
+
+/* ─────────────────────────────────────────────
+   Responsive
+───────────────────────────────────────────── */
 @media (max-width: 980px) {
-  .media-frame--primary {
-    min-height: 280px;
-  }
-
-  .media-frame--stacked {
-    min-height: 200px;
-  }
-
-  .media-card-copy--stacked {
-    padding: 1.1rem 1rem 1.2rem;
-  }
+  .media-frame--primary  { min-height: 280px; }
+  .media-frame--stacked  { min-height: 200px; }
 
   .booking-editorial {
     grid-template-columns: 1fr;
@@ -593,19 +691,30 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
     min-height: auto;
   }
 
-  .booking-editorial-overlay h2 {
+  .booking-editorial-overlay h2,
+  .booking-editorial-side h3 {
     max-width: none;
   }
 
-  .booking-editorial-side h3 {
-    max-width: none;
+  /* Stack cards vertically on narrow viewports, each sizes to own content */
+  .fare-contact-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .fare-contact-grid > *,
+  .fare-contact-grid > * > * {
+    flex: none !important;
+    height: auto !important;
+  }
+
+  .quick-contact__contact {
+    flex: none;
   }
 }
 
 @media (max-width: 640px) {
-  .booking-editorial-main {
-    border-radius: 24px;
-  }
+  .booking-editorial-main  { border-radius: 24px; }
 
   .booking-editorial-side {
     border-radius: 22px;
@@ -615,36 +724,26 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   .booking-editorial-overlay {
     padding: 1.1rem 1rem 1.2rem;
   }
-}
-.fare-contact-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-  gap: clamp(1.25rem, 2vw, 2rem);
-  align-items: stretch;
-}
 
-.fare-contact-grid > * {
-  height: 100%;
-}
-
-.quick-contact {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.quick-contact .btn {
-  margin-top: auto;
-}
-
-@media (max-width: 980px) {
-  .fare-contact-grid {
-    grid-template-columns: 1fr;
+  /* Tighter card padding on small screens */
+  .quick-contact__contact {
+    padding: 14px 18px;
   }
 
-  .fare-contact-grid > *,
-  .quick-contact {
-    height: auto;
+  .quick-contact__actions {
+    padding: 14px 18px 20px;
+  }
+
+  .trust-item {
+    padding: 14px 10px;
+  }
+
+  .trust-item__value {
+    font-size: 15px;
+  }
+
+  .trust-item__label {
+    font-size: 11px;
   }
 }
 </style>

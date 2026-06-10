@@ -20,11 +20,6 @@ defineProps({
       <template v-if="home">
         <div class="hero-grid">
           <div>
-            <div class="hero-kicker">
-              <span class="hero-badge">Licensed taxi &amp; dispatch</span>
-              <span class="hero-dot" aria-hidden="true"></span>
-              <span class="hero-badge">Red Deer, AB</span>
-            </div>
             <p v-if="eyebrow" class="eyebrow">{{ eyebrow }}</p>
             <h1>{{ title }}</h1>
             <p v-if="subtitle" class="banner-subtitle">{{ subtitle }}</p>

@@ -53,10 +53,6 @@ const milestones = [
             <div class="about-story-image about-story-image--main">
               <img :src="photoSet.fleet" alt="94 Cabs fleet vehicle in Red Deer" loading="lazy" />
             </div>
-            <figcaption class="about-story-caption panel-card">
-              <strong>Newer fleet rotation</strong>
-              <p>Sedans, SUVs, and vans kept ride-ready for airport, medical and everyday city work.</p>
-            </figcaption>
           </figure>
         </RevealOnScroll>
       </div>

@@ -5,23 +5,6 @@ import { navLinks, companyInfo, serviceLinks } from '../data/site'
 
 <template>
   <footer class="site-footer">
-    <div class="footer-cta">
-      <div class="container footer-cta-inner">
-        <div>
-          <p class="footer-dispatch-pill">24/7 dispatch · Red Deer, AB</p>
-          <h2>Book now or plan your next ride</h2>
-          <p>
-            For immediate pickups, call dispatch. For airport runs, medical trips, shuttle coordination, or account
-            setup we answer around the clock.
-          </p>
-        </div>
-        <div class="footer-cta-actions">
-          <a class="btn btn-primary" :href="companyInfo.phoneLink">{{ companyInfo.phoneDisplay }}</a>
-          <RouterLink class="btn btn-outline-light" to="/book-online">Book online</RouterLink>
-        </div>
-      </div>
-    </div>
-
     <div class="footer-main">
       <div class="container footer-grid">
         <section class="footer-brand-col">
@@ -32,7 +15,6 @@ import { navLinks, companyInfo, serviceLinks } from '../data/site'
           <p class="footer-about">
            Local taxi and passenger transport with licensed drivers for city rides, airport trips, medical bookings, accessible travel, and pre-arranged pickups across Red Deer and surrounding routes.
           </p>
-          <p class="footer-meta">Calls answered as Taxi Dispatch Services · Licensed service</p>
           <div class="footer-social">
             <a
               v-for="s in companyInfo.social"
