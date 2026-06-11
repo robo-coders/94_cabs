@@ -77,30 +77,6 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
       </div>
     </section>
 
-    <section class="home-segment">
-      <div class="container">
-        <RevealOnScroll>
-          <div class="section-head">
-            <p class="eyebrow">RIDER FEEDBACK</p>
-            <h2>Trusted by riders across Red Deer</h2>
-            <p class="section-lede">
-              Real feedback from riders across Red Deer — dependable service, clear communication, and comfortable rides.
-            </p>
-          </div>
-        </RevealOnScroll>
-        <RevealOnScroll class="reveal-stagger">
-          <TestimonialStrip :items="testimonials.home" variant="marquee" />
-        </RevealOnScroll>
-        <div class="logo-strip" aria-hidden="true">
-          <span>Airport trips</span>
-          <span>Medical visits</span>
-          <span>Business travel</span>
-          <span>Student fares</span>
-          <span>Accessible vans</span>
-        </div>
-      </div>
-    </section>
-
     <section class="home-segment section-surface">
       <div class="container booking-editorial">
         <RevealOnScroll>
@@ -235,6 +211,30 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
         </RevealOnScroll>
       </div>
     </section>
+
+        <section class="home-segment">
+        <div class="container">
+          <RevealOnScroll>
+            <div class="section-head">
+              <p class="eyebrow">RIDER FEEDBACK</p>
+              <h2>Trusted by riders across Red Deer</h2>
+              <p class="section-lede">
+                Real feedback from riders across Red Deer — dependable service, clear communication, and comfortable rides.
+              </p>
+            </div>
+          </RevealOnScroll>
+          <RevealOnScroll class="reveal-stagger">
+            <TestimonialStrip :items="testimonials.home" variant="marquee" />
+          </RevealOnScroll>
+          <div class="logo-strip" aria-hidden="true">
+            <span>Airport trips</span>
+            <span>Medical visits</span>
+            <span>Business travel</span>
+            <span>Student fares</span>
+            <span>Accessible vans</span>
+          </div>
+        </div>
+      </section>
   </div>
 </template>
 

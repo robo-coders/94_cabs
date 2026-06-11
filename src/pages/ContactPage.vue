@@ -33,8 +33,8 @@ const contactChannels = [
   <div class="page contact-page">
     <PageBanner
       eyebrow="CONTACT"
-      title="Dispatch, office, and everything between"
-      subtitle="For live pickup assignment, call first. Email and the form below are best for accounts, receipts, and non-urgent coordination."
+      title="Dispatch, office and everything between"
+      subtitle="For live pickups, call first. Use email or the form for accounts, receipts and non-urgent coordination."
       :image="photoSet.contact"
       compact
     >
@@ -43,26 +43,6 @@ const contactChannels = [
         <RouterLink class="btn btn-outline-light" to="/book-online">Book online</RouterLink>
       </div>
     </PageBanner>
-
-    <section class="section-block section-surface contact-phone-band">
-      <div class="container">
-        <RevealOnScroll>
-          <div class="contact-phone-inner">
-            <div>
-              <p class="eyebrow">IMMEDIATE TRIPS</p>
-              <h2 class="contact-hero-phone">
-                <a :href="companyInfo.phoneLink">{{ companyInfo.phoneDisplay }}</a>
-              </h2>
-              <p class="section-lede">
-                Answered as <strong>Taxi Dispatch Services</strong>. Have pickup address, destination, and payment
-                ready. At a hospital door or hotel porte-cochère — say so; it changes staging.
-              </p>
-            </div>
-            <a class="btn btn-primary contact-phone-cta" :href="companyInfo.phoneLink">Call now</a>
-          </div>
-        </RevealOnScroll>
-      </div>
-    </section>
 
     <section class="section-block">
       <div class="container contact-channels">
@@ -94,13 +74,11 @@ const contactChannels = [
           <article class="contact-payments panel-card hover-lift">
             <p class="eyebrow">PAYMENTS</p>
             <h2>In-vehicle payment options</h2>
-            <p class="section-lede">Drivers carry terminal support for common card brands plus cash and mobile wallet flows.</p>
+            <p class="section-lede">Drivers accept cards, cash and mobile wallets.</p>
             <div class="pill-strip contact-pill-strip">
               <span class="pill">Cash</span>
               <span class="pill">Debit / credit</span>
-              <span class="pill">E-transfer</span>
               <span class="pill">Apple Pay</span>
-              <span class="pill">Interac</span>
             </div>
             <p>Need a receipt for expenses? Ask the driver at drop-off or mention it when booking.</p>
           </article>
@@ -119,7 +97,7 @@ const contactChannels = [
               </li>
               <li>
                 <strong>Form below</strong>
-                <span>Routed to the same mailbox as info@ — use when attachments are not needed.</span>
+                <span>Use the form for non-urgent requests without attachments.</span>
               </li>
             </ul>
           </article>
@@ -133,21 +111,20 @@ const contactChannels = [
           <article class="contact-form-shell hover-lift">
             <h3>Send a message</h3>
             <p class="contact-form-lede">
-              Front-end form for now — wire to your CRM or email API when ready. Fields match what dispatch asks on a
-              second call.
+              Use this form for non-urgent enquiries.The fields are set up to match what dispatch asks for on a second call.
             </p>
             <form class="contact-form" @submit.prevent>
               <label>
-                Full name
-                <input type="text" name="name" autocomplete="name" placeholder="Jordan Smith" />
+                Full name *
+                <input type="text" name="name" autocomplete="name" placeholder="Jordan Smith" required />
               </label>
               <label>
-                Phone
-                <input type="tel" name="phone" autocomplete="tel" placeholder="403-555-0100" />
+                Phone *
+                <input type="tel" name="phone" autocomplete="tel" placeholder="403-555-0100" required />
               </label>
               <label>
-                Email
-                <input type="email" name="email" autocomplete="email" placeholder="you@company.com" />
+                Email *
+                <input type="email" name="email" autocomplete="email" placeholder="you@company.com" required />
               </label>
               <label>
                 Topic
@@ -155,7 +132,12 @@ const contactChannels = [
               </label>
               <label>
                 Message
-                <textarea name="message" rows="6" placeholder="Pickup zones, typical times, accessibility needs…" />
+                <textarea
+                  name="message"
+                  rows="6"
+                  placeholder="Pickup zones, typical times, accessibility needs…"
+                  required
+                />
               </label>
               <button type="submit" class="btn btn-dark">Submit inquiry</button>
             </form>
@@ -164,57 +146,13 @@ const contactChannels = [
 
         <RevealOnScroll>
           <aside class="contact-aside">
-            <div class="map-placeholder contact-map hover-lift">
-              <div>
-                <h3>Office location</h3>
-                <p>{{ companyInfo.primaryAddress }}</p>
-                <a class="btn btn-primary" :href="companyInfo.mapsQuery" target="_blank" rel="noreferrer">Open map</a>
+            <div class="contact-map card-block hover-lift">
+              <h3>Map</h3>
+              <div class="map-frame">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2439.7912255572483!2d-113.81396782316001!3d52.3016436720048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3545c10d21e1e3%3A0x590aa2c7771afa9e!2s94%20Cabs%20-%20Red%20Deer!5e0!3m2!1sen!2suk!4v1781135959880!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </div>
-            <article class="contact-coverage panel-card hover-lift">
-              <div
-                class="contact-coverage__image"
-                :style="{ backgroundImage: `url(${photoSet.downtown})` }"
-                role="img"
-                aria-label="Red Deer service area"
-              ></div>
-              <div class="contact-coverage__body">
-                <h3>Coverage snapshot</h3>
-                <p>
-                  Daily work concentrates inside city limits with regular QEII and YYC transfer demand. Out-of-town flat
-                  rates are quoted case-by-case.
-                </p>
-                <a class="btn btn-ghost-dark" :href="companyInfo.phoneLink">Call for a quote</a>
-              </div>
-            </article>
           </aside>
-        </RevealOnScroll>
-      </div>
-    </section>
-
-    <section class="section-block section-dark">
-      <div class="container">
-        <RevealOnScroll>
-          <div class="section-head section-head--center">
-            <p class="eyebrow">TRUST</p>
-            <h2>What senders say about follow-through</h2>
-          </div>
-        </RevealOnScroll>
-        <RevealOnScroll>
-          <TestimonialStrip :items="testimonials.contact" variant="grid" />
-        </RevealOnScroll>
-      </div>
-    </section>
-
-    <section class="section-block">
-      <div class="container cta-panel">
-        <RevealOnScroll>
-          <h2>Still faster to talk than to type?</h2>
-          <p>Especially for discharge timing and late-night pickups outside lit entrances.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" :href="companyInfo.phoneLink">Call dispatch</a>
-            <RouterLink class="btn btn-outline-light" to="/book-online">Use web booking</RouterLink>
-          </div>
         </RevealOnScroll>
       </div>
     </section>
@@ -359,42 +297,26 @@ const contactChannels = [
   display: grid;
   gap: 1rem;
   height: 100%;
-  grid-template-rows: auto 1fr;
 }
 
 .contact-map {
-  min-height: 200px;
-}
-
-.contact-coverage {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0;
+}
+
+.map-frame {
+  margin-top: 1rem;
+  border-radius: 18px;
   overflow: hidden;
+  min-height: 420px;
+  flex: 1;
+}
+
+.map-frame iframe {
+  width: 100%;
   height: 100%;
-}
-
-.contact-coverage__image {
-  min-height: 140px;
-  background-size: cover;
-  background-position: center;
-}
-
-.contact-coverage__body {
-  padding: 1.25rem 1.35rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.contact-coverage__body p {
-  flex: 1;
-  color: var(--ink-soft);
-  margin-bottom: 1rem;
-}
-
-.contact-coverage__body .btn {
-  align-self: flex-start;
-  margin-top: auto;
+  border: 0;
+  display: block;
 }
 </style>

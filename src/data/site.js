@@ -27,39 +27,39 @@ export const companyInfo = {
 
 export const photoSet = {
   homeHero:
-    '/Images/Home/fleet.jpg',
+    '/Images/Home/hero.jpg',
   homeHeroAlt:
-        '/Images/Home/fleet.jpg',
+        '/Images/Home/hero.jpg',
 
   fleet:
-    '/Images/Home/fleet.jpg',
+    '/Images/Home/home_1.jpg',
   dispatch:
-    '/Images/Home/fleet.jpg',
+    '/Images/Home/home_2.jpg',
   appBooking:
     '/Images/Home/app.jpg',
   airport:
-        '/Images/Home/fleet.jpg',
+        '/Images/team.jpg',
 
   airportTerminal:
         '/Images/Home/fleet.jpg',
 
   wheelchair:
-        '/Images/Home/fleet.jpg',
+        '/Images/wheelchair.jpg',
 
   shuttle:
-        '/Images/Home/fleet.jpg',
+        '/Images/shuttle.jpg',
 
   downtown:
         '/Images/Home/fleet.jpg',
 
   contact:
-        '/Images/Home/fleet.jpg',
+        '/Images/about.jpg',
 
   business:
         '/Images/Home/fleet.jpg',
 
   medical:
-        '/Images/Home/fleet.jpg',
+        '/Images/medical.jpg',
 
   senior:
         '/Images/Home/fleet.jpg',
@@ -70,10 +70,10 @@ export const photoSet = {
         '/Images/Home/fleet.jpg',
 
   highway:
-        '/Images/Home/fleet.jpg',
+        '/Images/group_close.jpg',
 
   team:
-        '/Images/Home/fleet.jpg',
+        '/Images/group.jpg',
 
   mapAbstract:
         '/Images/Home/fleet.jpg',

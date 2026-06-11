@@ -5,7 +5,7 @@ import BookOnlinePage from '../pages/BookOnlinePage.vue'
 import ShuttlePage from '../pages/ShuttlePage.vue'
 import HandicapPage from '../pages/HandicapPage.vue'
 import ServicesPage from '../pages/ServicesPage.vue'
-// import ContactPage from '../pages/ContactPage.vue'
+import ContactPage from '../pages/ContactPage.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomePage, meta: { title: 'Home' } },
@@ -14,7 +14,7 @@ const routes = [
   { path: '/94-shuttle', name: 'shuttle', component: ShuttlePage, meta: { title: '94 Shuttle' } },
   { path: '/handicap-services', name: 'handicap', component: HandicapPage, meta: { title: 'Handicap Services' } },
   { path: '/services', name: 'services', component: ServicesPage, meta: { title: 'Services' } },
-  // { path: '/contact-us', name: 'contact', component: ContactPage, meta: { title: 'Contact Us' } }
+  { path: '/contact-us', name: 'contact', component: ContactPage, meta: { title: 'Contact Us' } }
 ]
 
 const router = createRouter({
