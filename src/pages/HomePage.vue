@@ -7,8 +7,12 @@ import RevealOnScroll from '../components/RevealOnScroll.vue'
 import TestimonialStrip from '../components/TestimonialStrip.vue'
 </script>
 
+
 <template>
   <div class="page home-page">
+
+
+    <!-- ① HERO — dark -->
     <PageBanner
       home
       eyebrow="RED DEER TAXI &amp; DISPATCH"
@@ -23,7 +27,9 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
       </div>
     </PageBanner>
 
-    <section class="home-segment section-surface">
+
+    <!-- ② SERVICE — white. Immediately opens up after the dark hero -->
+    <section class="home-segment seg-white">
       <div class="container split-content media-focus service-balance-section">
         <RevealOnScroll>
           <div class="service-copy">
@@ -38,12 +44,10 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
               From quick city rides to scheduled pickups, senior travel, and business transport, the goal is to make
               booking and riding as straightforward as possible.
             </p>
-
             <div class="cta-row">
               <RouterLink class="btn btn-dark" to="/services">Explore full services</RouterLink>
               <RouterLink class="btn btn-ghost-dark" to="/about-us">About 94 Cabs Red Deer</RouterLink>
             </div>
-
             <div class="service-points">
               <article class="service-point hover-lift">
                 <strong>24/7 dispatch support</strong>
@@ -61,12 +65,12 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
           </div>
         </RevealOnScroll>
 
+
         <RevealOnScroll>
           <div class="media-stack media-stack--balanced">
             <div class="media-frame media-frame--primary">
               <img :src="photoSet.fleet" alt="Professional taxi fleet ready for service" loading="lazy" />
             </div>
-
             <article class="media-card media-card--stacked hover-lift">
               <div class="media-frame media-frame--secondary media-frame--stacked">
                 <img :src="photoSet.dispatch" alt="Taxi dispatch team supporting local bookings" loading="lazy" />
@@ -77,7 +81,9 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
       </div>
     </section>
 
-    <section class="home-segment section-surface">
+
+    <!-- ③ BOOKING — sage surface. Warm contrast between the two white sections -->
+    <section class="home-segment seg-surface">
       <div class="container booking-editorial">
         <RevealOnScroll>
           <article class="booking-editorial-main" :style="{ backgroundImage: `url(${photoSet.appBooking})` }">
@@ -88,7 +94,6 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
                 Book online, use the app or call dispatch directly. Whether you need an immediate pickup or want to
                 arrange a ride in advance, 94 Cabs Red Deer gives you simple ways to book and stay on top of your trip.
               </p>
-
               <div class="booking-editorial-actions">
                 <RouterLink class="btn btn-primary" to="/book-online">Open booking page</RouterLink>
                 <a class="btn btn-outline-light" :href="companyInfo.appLink" target="_blank" rel="noreferrer">Get the app</a>
@@ -97,13 +102,13 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
           </article>
         </RevealOnScroll>
 
+
         <RevealOnScroll>
           <aside class="booking-editorial-side hover-lift">
             <div class="booking-editorial-side-top">
               <p class="booking-mini-label">Why riders choose us</p>
               <h3>Simple booking and dependable local support</h3>
             </div>
-
             <div class="booking-editorial-points">
               <article class="booking-point">
                 <span class="booking-point-index">01</span>
@@ -112,7 +117,6 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
                   <p>Book online, app or over the phone.</p>
                 </div>
               </article>
-
               <article class="booking-point">
                 <span class="booking-point-index">02</span>
                 <div>
@@ -120,7 +124,6 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
                   <p>Sedans, SUVs, vans, and accessible vehicles.</p>
                 </div>
               </article>
-
               <article class="booking-point">
                 <span class="booking-point-index">03</span>
                 <div>
@@ -129,7 +132,6 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
                 </div>
               </article>
             </div>
-
             <div class="booking-editorial-side-bottom">
               <RouterLink class="booking-inline-link" to="/services">
                 Explore all services
@@ -141,17 +143,19 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
       </div>
     </section>
 
-    <!-- ── Fare + Contact section ───────────────────────────────────────── -->
-    <section class="home-segment section-surface">
+
+    <!-- ④ FARE + CONTACT — white. Cards read crisply; breaks the sage run -->
+    <section class="home-segment seg-white">
       <div class="container fare-contact-grid">
         <RevealOnScroll>
           <FarePanel />
         </RevealOnScroll>
 
+
         <RevealOnScroll>
           <article class="quick-contact">
 
-            <!-- Zone 1: Trust signal trio (dark band) -->
+
             <div class="quick-contact__trust" role="list" aria-label="Service highlights">
               <div class="trust-item" role="listitem">
                 <span class="trust-item__value">24/7</span>
@@ -167,7 +171,7 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
               </div>
             </div>
 
-            <!-- Zone 3: Contact rows -->
+
             <div class="quick-contact__contact">
               <a class="contact-row" :href="companyInfo.phoneLink">
                 <span class="contact-icon" aria-hidden="true">
@@ -188,7 +192,7 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
               </a>
             </div>
 
-            <!-- Zone 4: CTAs -->
+
             <div class="quick-contact__actions">
               <a class="btn-call" :href="companyInfo.phoneLink">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -207,38 +211,117 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
               </RouterLink>
             </div>
 
+
           </article>
         </RevealOnScroll>
       </div>
     </section>
 
-        <section class="home-segment">
-        <div class="container">
-          <RevealOnScroll>
-            <div class="section-head">
-              <p class="eyebrow">RIDER FEEDBACK</p>
-              <h2>Trusted by riders across Red Deer</h2>
-              <p class="section-lede">
-                Real feedback from riders across Red Deer — dependable service, clear communication, and comfortable rides.
-              </p>
-            </div>
-          </RevealOnScroll>
-          <RevealOnScroll class="reveal-stagger">
-            <TestimonialStrip :items="testimonials.home" variant="marquee" />
-          </RevealOnScroll>
-          <div class="logo-strip" aria-hidden="true">
-            <span>Airport trips</span>
-            <span>Medical visits</span>
-            <span>Business travel</span>
-            <span>Student fares</span>
-            <span>Accessible vans</span>
+
+    <!-- ⑤ TESTIMONIALS — dark. Mirrors the hero; strong visual closure before footer -->
+    <section class="home-segment seg-dark">
+      <div class="container">
+        <RevealOnScroll>
+          <div class="section-head">
+            <p class="eyebrow eyebrow--on-dark">RIDER FEEDBACK</p>
+            <h2 class="heading--on-dark">Trusted by riders across Red Deer</h2>
+            <p class="section-lede lede--on-dark">
+              Real feedback from riders across Red Deer — dependable service, clear communication, and comfortable rides.
+            </p>
           </div>
+        </RevealOnScroll>
+        <RevealOnScroll class="reveal-stagger">
+          <div class="testimonial-wrap">
+            <TestimonialStrip :items="testimonials.home" variant="marquee" />
+          </div>
+        </RevealOnScroll>
+        <div class="logo-strip logo-strip--on-dark" aria-hidden="true">
+          <span>Airport trips</span>
+          <span>Medical visits</span>
+          <span>Business travel</span>
+          <span>Student fares</span>
+          <span>Accessible vans</span>
         </div>
-      </section>
+      </div>
+    </section>
+
+
   </div>
 </template>
 
+
 <style scoped>
+
+
+/* ─────────────────────────────────────────────
+   Section background tokens
+   Page rhythm: dark → white → sage → white → dark
+   No two adjacent sections share the same bg.
+───────────────────────────────────────────── */
+.seg-white   { background: #ffffff; }
+.seg-surface { background: #f0f2ee; }
+.seg-dark    { background: #111a10; }
+
+
+/* ─────────────────────────────────────────────
+   Dark section — text overrides
+───────────────────────────────────────────── */
+.eyebrow--on-dark {
+  color: #7ec874 !important;
+}
+
+
+.heading--on-dark {
+  color: #f0f2ee;
+}
+
+
+.lede--on-dark {
+  color: rgba(240, 242, 238, 0.58);
+}
+
+
+.logo-strip--on-dark {
+  border-top-color: rgba(240, 242, 238, 0.1) !important;
+}
+
+
+.logo-strip--on-dark span {
+  color: rgba(240, 242, 238, 0.3) !important;
+  border-color: rgba(240, 242, 238, 0.12) !important;
+}
+
+
+/*
+  Remove ALL side fade/shadow effects from the testimonial slider.
+  This overrides mask-image, ::before, and ::after that create
+  the ugly edge gradients on both sides of the marquee.
+*/
+.testimonial-wrap :deep(.marquee-slider),
+.testimonial-wrap :deep(.marquee-slider)::before,
+.testimonial-wrap :deep(.marquee-slider)::after {
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+}
+
+
+.testimonial-wrap :deep(*::before) {
+  display: none !important;
+}
+
+
+.testimonial-wrap :deep(*::after) {
+  display: none !important;
+}
+
+
+.testimonial-wrap :deep(*) {
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  mask-mode: alpha !important;
+  -webkit-mask-mode: alpha !important;
+}
+
 
 /* ─────────────────────────────────────────────
    Service section
@@ -248,12 +331,14 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   gap: clamp(2rem, 4vw, 4.5rem);
 }
 
+
 .service-copy {
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
 }
+
 
 .service-points {
   display: grid;
@@ -262,13 +347,14 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   margin-top: 1.75rem;
 }
 
+
 .service-point {
   padding: 1rem 1.1rem;
   border-radius: 20px;
-  border: 1px solid rgba(17, 24, 19, 0.08);
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(17, 24, 19, 0.09);
+  background: #f8faf7;
 }
+
 
 .service-point strong {
   display: block;
@@ -278,11 +364,13 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   color: #0f1720;
 }
 
+
 .service-point p {
   margin: 0;
-  color: rgba(15, 23, 32, 0.72);
+  color: rgba(15, 23, 32, 0.68);
   line-height: 1.6;
 }
+
 
 /* ─────────────────────────────────────────────
    Media stack
@@ -293,6 +381,7 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   align-content: start;
 }
 
+
 .media-frame--primary img,
 .media-frame--secondary img {
   width: 100%;
@@ -300,9 +389,11 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   object-fit: cover;
 }
 
+
 .media-frame--primary {
   min-height: 360px;
 }
+
 
 .media-card {
   border-radius: 24px;
@@ -312,22 +403,26 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   overflow: hidden;
 }
 
+
 .media-card--stacked {
   display: grid;
   grid-template-columns: 1fr;
 }
+
 
 .media-frame--secondary {
   min-height: 180px;
   overflow: hidden;
 }
 
+
 .media-frame--stacked {
   min-height: 220px;
 }
 
+
 /* ─────────────────────────────────────────────
-   Booking editorial
+   Booking editorial — on sage surface
 ───────────────────────────────────────────── */
 .booking-editorial {
   display: grid;
@@ -335,6 +430,7 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   gap: clamp(1.25rem, 2vw, 2rem);
   align-items: stretch;
 }
+
 
 .booking-editorial-main {
   position: relative;
@@ -346,6 +442,7 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   box-shadow: 0 24px 58px rgba(15, 23, 32, 0.12);
 }
 
+
 .booking-editorial-main::before {
   content: '';
   position: absolute;
@@ -354,6 +451,7 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
     linear-gradient(180deg, rgba(9, 14, 11, 0.12) 0%, rgba(9, 14, 11, 0.56) 100%),
     linear-gradient(90deg, rgba(9, 14, 11, 0.74) 0%, rgba(9, 14, 11, 0.34) 52%, rgba(9, 14, 11, 0.08) 100%);
 }
+
 
 .booking-editorial-overlay {
   position: relative;
@@ -366,9 +464,11 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   max-width: 38rem;
 }
 
+
 .booking-editorial-overlay .eyebrow {
   margin-bottom: 0.8rem;
 }
+
 
 .booking-editorial-overlay h2 {
   margin: 0;
@@ -379,12 +479,14 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   color: #fff;
 }
 
+
 .booking-editorial-overlay p:not(.eyebrow) {
   margin-top: 1rem;
   max-width: 34rem;
   color: rgba(255, 255, 255, 0.84);
   line-height: 1.72;
 }
+
 
 .booking-editorial-actions {
   display: flex;
@@ -393,6 +495,8 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   margin-top: 1.35rem;
 }
 
+
+/* Solid white on sage — intentionally elevated */
 .booking-editorial-side {
   display: flex;
   flex-direction: column;
@@ -401,9 +505,10 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   padding: clamp(1.2rem, 1.8vw, 1.6rem);
   border-radius: 28px;
   border: 1px solid rgba(17, 24, 19, 0.08);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.84));
-  box-shadow: 0 16px 36px rgba(15, 23, 32, 0.06);
+  background: #ffffff;
+  box-shadow: 0 16px 36px rgba(15, 23, 32, 0.07);
 }
+
 
 .booking-mini-label {
   margin: 0 0 0.35rem;
@@ -414,6 +519,7 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   color: var(--brand-green);
 }
 
+
 .booking-editorial-side h3 {
   margin: 0;
   font-size: clamp(1.1rem, 1.5vw, 1.35rem);
@@ -422,11 +528,13 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   max-width: none;
 }
 
+
 .booking-editorial-points {
   display: grid;
   gap: 0.85rem;
   margin-top: 1rem;
 }
+
 
 .booking-point {
   display: grid;
@@ -437,10 +545,12 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   border-bottom: 1px solid rgba(17, 24, 19, 0.07);
 }
 
+
 .booking-point:last-child {
   padding-bottom: 0;
   border-bottom: 0;
 }
+
 
 .booking-point-index {
   display: inline-flex;
@@ -456,6 +566,7 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   letter-spacing: 0.04em;
 }
 
+
 .booking-point strong {
   display: block;
   margin-bottom: 0.15rem;
@@ -464,17 +575,20 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   color: #101814;
 }
 
+
 .booking-point p {
   margin: 0;
   color: rgba(16, 24, 20, 0.68);
   line-height: 1.45;
 }
 
+
 .booking-editorial-side-bottom {
   margin-top: 1rem;
   padding-top: 0.95rem;
   border-top: 1px solid rgba(17, 24, 19, 0.07);
 }
+
 
 .booking-inline-link {
   display: inline-flex;
@@ -485,16 +599,19 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   text-decoration: none;
 }
 
+
 .booking-inline-link span {
   transition: transform 0.2s ease;
 }
+
 
 .booking-inline-link:hover span {
   transform: translateX(3px);
 }
 
+
 /* ─────────────────────────────────────────────
-   Fare + Contact grid — equal height columns
+   Fare + Contact grid — on white
 ───────────────────────────────────────────── */
 .fare-contact-grid {
   display: grid;
@@ -503,17 +620,18 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   align-items: stretch;
 }
 
-/* RevealOnScroll is a plain div — force it to stretch */
+
 .fare-contact-grid > * {
   display: flex !important;
   flex-direction: column;
 }
 
-/* Cards fill the full column height */
+
 .fare-contact-grid > * > * {
   flex: 1;
   height: 100%;
 }
+
 
 /* ─────────────────────────────────────────────
    Quick-contact card
@@ -521,26 +639,20 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
 .quick-contact {
   background: #fff;
   border-radius: 16px;
-  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 8px 32px rgba(15, 23, 32, 0.07);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
-/* Contact zone grows to fill leftover space so CTAs pin to bottom */
-.quick-contact__contact {
-  flex: 1;
-}
 
-/* Zone 1 — trust trio with dark band */
 .quick-contact__trust {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.07);
   background-color: #1c2b1a;
 }
+
 
 .trust-item {
   background: transparent;
@@ -550,9 +662,11 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   gap: 4px;
 }
 
+
 .trust-item + .trust-item {
   border-left: 0.5px solid rgba(255, 255, 255, 0.1);
 }
+
 
 .trust-item__value {
   font-size: 18px;
@@ -562,13 +676,15 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   line-height: 1;
 }
 
+
 .trust-item__label {
   font-size: 11.5px;
   color: rgba(245, 245, 243, 0.5);
   line-height: 1.3;
 }
 
-/* Zone 3 — contact rows, grows to fill leftover height */
+
+/* flex:1 absorbs extra height so CTAs always pin to bottom */
 .quick-contact__contact {
   flex: 1;
   padding: 16px 28px;
@@ -578,12 +694,14 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.07);
 }
 
+
 .contact-row {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
 }
+
 
 .contact-icon {
   width: 32px;
@@ -596,11 +714,13 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   flex-shrink: 0;
 }
 
+
 .contact-icon svg {
   width: 15px;
   height: 15px;
   color: var(--brand-deep, #4a7c3f);
 }
+
 
 .contact-row span:last-child {
   font-size: 14px;
@@ -609,17 +729,19 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   transition: color 0.15s;
 }
 
+
 .contact-row:hover span:last-child {
   color: var(--brand-deep, #4a7c3f);
 }
 
-/* Zone 4 — CTA buttons */
+
 .quick-contact__actions {
   padding: 16px 28px 24px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 
 .btn-call {
   display: flex;
@@ -637,15 +759,18 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   transition: background 0.15s;
 }
 
+
 .btn-call svg {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
 }
 
+
 .btn-call:hover {
   background: #3d6b34;
 }
+
 
 .btn-book {
   display: flex;
@@ -664,15 +789,18 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   transition: background 0.15s, border-color 0.15s;
 }
 
+
 .btn-book svg {
   width: 15px;
   height: 15px;
 }
 
+
 .btn-book:hover {
   background: #f9fafb;
   border-color: rgba(0, 0, 0, 0.22);
 }
+
 
 /* ─────────────────────────────────────────────
    Responsive
@@ -681,9 +809,11 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
   .media-frame--primary  { min-height: 280px; }
   .media-frame--stacked  { min-height: 200px; }
 
+
   .booking-editorial {
     grid-template-columns: 1fr;
   }
+
 
   .booking-editorial-main,
   .booking-editorial-overlay,
@@ -691,16 +821,18 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
     min-height: auto;
   }
 
+
   .booking-editorial-overlay h2,
   .booking-editorial-side h3 {
     max-width: none;
   }
 
-  /* Stack cards vertically on narrow viewports, each sizes to own content */
+
   .fare-contact-grid {
     grid-template-columns: 1fr;
     align-items: start;
   }
+
 
   .fare-contact-grid > *,
   .fare-contact-grid > * > * {
@@ -708,39 +840,47 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
     height: auto !important;
   }
 
+
   .quick-contact__contact {
     flex: none;
   }
 }
 
+
 @media (max-width: 640px) {
   .booking-editorial-main  { border-radius: 24px; }
+
 
   .booking-editorial-side {
     border-radius: 22px;
     padding: 1.05rem 0.95rem 1.1rem;
   }
 
+
   .booking-editorial-overlay {
     padding: 1.1rem 1rem 1.2rem;
   }
 
-  /* Tighter card padding on small screens */
+
   .quick-contact__contact {
     padding: 14px 18px;
   }
+
 
   .quick-contact__actions {
     padding: 14px 18px 20px;
   }
 
+
   .trust-item {
     padding: 14px 10px;
   }
 
+
   .trust-item__value {
     font-size: 15px;
   }
+
 
   .trust-item__label {
     font-size: 11px;
