@@ -8,11 +8,11 @@
     <dl>
       <div>
         <dt>Initial Charge</dt>
-        <dd>$3.75</dd>
+        <dd>$3.20</dd>
       </div>
       <div>
         <dt>Distance</dt>
-        <dd>$1.90 / km</dd>
+        <dd>$2.20 / km</dd>
       </div>
       <div>
         <dt>Waiting Time</dt>

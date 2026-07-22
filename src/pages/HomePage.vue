@@ -5,11 +5,6 @@ import HeroSlider from '../components/HeroSlider.vue'
 import RevealOnScroll from '../components/RevealOnScroll.vue'
 import TestimonialStrip from '../components/TestimonialStrip.vue'
 
-// Homepage hero slides. Slide 1 keeps the existing hero photo/copy and is
-// rendered via HeroSlideText. Slide 2 is now a fully self-contained
-// two-city map (see HeroTwoCityMap.vue) with its own fixed headline, copy
-// and single CTA baked in — it only needs an id and its theme here, no
-// eyebrow/title/ctas fields to pass down.
 const heroSlides = [
   {
     id: 'fleet',

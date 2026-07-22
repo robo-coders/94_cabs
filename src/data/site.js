@@ -27,9 +27,9 @@ export const companyInfo = {
 
 export const photoSet = {
   homeHero:
-    '/Images/Home/hero.jpg',
+    '/Images/Home/fleet.jpg',
   homeHeroAlt:
-        '/Images/Home/hero.jpg',
+        '/Images/Home/fleet.jpg',
 
   fleet:
     '/Images/Home/home_1.jpg',
