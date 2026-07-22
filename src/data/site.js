@@ -174,13 +174,25 @@ export const serviceCategories = [
     id: 'core',
   title: 'Daily taxi service',
   lede: 'Local rides with fast dispatch support for ASAP pickups and pre-booked trips.',
-  image: photoSet.fleet,
+  image: photoSet.team,
   points: [
     '24/7 phone dispatch',
     'Immediate pickups and advance bookings',
     'Sedans, SUVs, and larger vans for groups',
     'City-wide coverage across Red Deer'
     ]
+  },
+  {
+  id: 'daily-2',
+  title: 'Lady Pink Cab service',
+  lede: 'A womenfirst ride service across Red Deer, driven by ladies and built around safety, comfort and trustworthy dispatch.',
+  image: photoSet.fleet,
+  points: [
+    'Female drivers dedicated to women’s safety and peace of mind',
+    'Discreet, respectful service for everyday trips and special needs',
+    'Clean, well maintained vehicles with a focus on comfort',
+    'Easy booking by phone, app or online with fast & reliable dispatch'
+  ]
   },
   {
     id: 'airport',

@@ -1,10 +1,36 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import { companyInfo, photoSet, testimonials } from '../data/site'
 import FarePanel from '../components/FarePanel.vue'
-import PageBanner from '../components/PageBanner.vue'
+import HeroSlider from '../components/HeroSlider.vue'
 import RevealOnScroll from '../components/RevealOnScroll.vue'
 import TestimonialStrip from '../components/TestimonialStrip.vue'
+
+// Homepage hero slides. Slide 1 keeps the existing hero photo/copy and is
+// rendered via HeroSlideText. Slide 2 is now a fully self-contained
+// two-city map (see HeroTwoCityMap.vue) with its own fixed headline, copy
+// and single CTA baked in — it only needs an id and its theme here, no
+// eyebrow/title/ctas fields to pass down.
+const heroSlides = [
+  {
+    id: 'fleet',
+    theme: 'image',
+    image: photoSet.homeHero,
+    imageAlt: 'A 94 Cabs Red Deer taxi from the fleet',
+    eyebrow: 'RED DEER TAXI & DISPATCH',
+    title: 'Come ride in the newest fleet in town',
+    subtitle:
+      '94 Cabs Red Deer is available 24/7 with well-maintained vehicles, professional drivers, and dependable dispatch for airport runs, business travel, senior transportation, non-emergency medical trips and everyday rides across Red Deer.',
+    ctas: [
+      { label: 'Call dispatch', href: companyInfo.phoneLink, variant: 'primary' },
+      { label: 'Book online', to: '/book-online', variant: 'outline-light' },
+      { label: 'View services', to: '/services', variant: 'outline-light' }
+    ]
+  },
+  {
+    id: 'sylvan-lake',
+    theme: 'gradient'
+  }
+]
 </script>
 
 
@@ -13,19 +39,7 @@ import TestimonialStrip from '../components/TestimonialStrip.vue'
 
 
     <!-- ① HERO — dark -->
-    <PageBanner
-      home
-      eyebrow="RED DEER TAXI &amp; DISPATCH"
-      title="Come ride in the newest fleet in town"
-      subtitle="94 Cabs Red Deer is available 24/7 with well-maintained vehicles, professional drivers, and dependable dispatch for airport runs, business travel, senior transportation, non-emergency medical trips and everyday rides across Red Deer."
-      :image="photoSet.homeHero"
-    >
-      <div class="cta-row">
-        <a class="btn btn-primary" :href="companyInfo.phoneLink">Call dispatch</a>
-        <RouterLink class="btn btn-outline-light" to="/book-online">Book online</RouterLink>
-        <RouterLink class="btn btn-outline-light" to="/services">View services</RouterLink>
-      </div>
-    </PageBanner>
+    <HeroSlider :slides="heroSlides" />
 
 
     <!-- ② SERVICE — white. Immediately opens up after the dark hero -->
