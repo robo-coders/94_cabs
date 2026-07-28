@@ -15,7 +15,7 @@ export const companyInfo = {
   email: 'info@94cabsreddeer.com',
   mailingEmail: 'red_deer@94cabs.com',
   primaryAddress: '7460 49 Ave #8, Red Deer, AB T4P 1M2, Canada',
-  appLink: 'https://94cabsreddeer.com/',
+  appLink: 'https://onelink.to/vcq4rn',
   parentBrandLink: 'https://94cabs.com/',
   mapsQuery: 'https://maps.google.com/?q=7460+49+Ave+%238,+Red+Deer,+AB+T4P+1M2,+Canada',
   /** Placeholder social — replace with live profiles when available */

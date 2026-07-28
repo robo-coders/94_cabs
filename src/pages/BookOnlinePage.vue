@@ -15,10 +15,9 @@ const initializeEmbed = () => {
 
   new window.TaxiCaller.PassengerApp({
     element: `#${bookingElementId}`,
-    app: 'taxicaller',
-    company: 22600,
-    heightDesktop: '720px',
-    heightMobile: '260px',
+    app: '~628ef9a74e223190',
+    heightDesktop: '700px',
+    heightMobile: '200px',
     mobileBreakpoint: '992px',
     returnMessage: 'ᐊ Return to website'
   })
