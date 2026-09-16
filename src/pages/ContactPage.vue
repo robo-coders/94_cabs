@@ -7,18 +7,33 @@ import { companyInfo, photoSet } from '../data/site'
 
 const CONTACT_ENDPOINT = '/api/contact'
 
+const SUCCESS_MESSAGE =
+  'Thank you. Your enquiry has been received and a member of our team will be in touch shortly.'
+
+// SMTP delivery can stall behind the serverless function; without this the
+// button would sit on "Sending…" forever with no way back for the visitor.
+const REQUEST_TIMEOUT_MS = 20000
+
 const formStatus = ref('idle')
 const formError = ref('')
 
 async function submitInquiry(event) {
+  if (formStatus.value === 'sending') return
+
+  const form = event.target
+
   formStatus.value = 'sending'
   formError.value = ''
+
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
 
   try {
     const response = await fetch(CONTACT_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(Object.fromEntries(new FormData(event.target)))
+      body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      signal: controller.signal
     })
 
     const payload = await response.json().catch(() => ({}))
@@ -27,12 +42,17 @@ async function submitInquiry(event) {
       throw new Error(payload.error || `Request failed (${response.status})`)
     }
 
-    event.target.reset()
     formStatus.value = 'success'
+    form.reset()
   } catch (error) {
     console.error('Contact form failed:', error)
-    formError.value = error.message
+    formError.value =
+      error.name === 'AbortError'
+        ? 'This is taking longer than expected. Please call dispatch, or try again in a moment.'
+        : error.message
     formStatus.value = 'error'
+  } finally {
+    clearTimeout(timeout)
   }
 }
 
@@ -225,11 +245,21 @@ const contactChannels = [
                 {{ formStatus === 'sending' ? 'Sending…' : 'Submit inquiry' }}
               </button>
 
-              <p v-if="formStatus === 'success'" class="form-success">
-                Thank you — your enquiry has been sent.
+              <p
+                v-if="formStatus === 'success'"
+                class="form-success"
+                role="status"
+                aria-live="polite"
+              >
+                {{ SUCCESS_MESSAGE }}
               </p>
 
-              <p v-if="formStatus === 'error'" class="form-error">
+              <p
+                v-if="formStatus === 'error'"
+                class="form-error"
+                role="alert"
+                aria-live="assertive"
+              >
                 {{ formError || 'Unable to send right now. Please call dispatch.' }}
               </p>
             </form>

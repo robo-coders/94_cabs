@@ -69,7 +69,13 @@ export default async function handler(req, res) {
     auth: {
       user: GMAIL_USER,
       pass: GMAIL_APP_PASSWORD
-    }
+    },
+    // Kept well inside the serverless execution budget so a stalled SMTP
+    // handshake returns a real error instead of the function being killed
+    // mid-flight and the browser waiting on a response that never lands.
+    connectionTimeout: 5000,
+    greetingTimeout: 5000,
+    socketTimeout: 8000
   })
 
   const subject = data.subject
@@ -107,6 +113,16 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true })
   } catch (error) {
     console.error('Contact form: sendMail failed', error)
-    return res.status(502).json({ error: 'Could not send your message. Please call dispatch.' })
+
+    const timedOut = ['ETIMEDOUT', 'ECONNECTION', 'ESOCKET', 'EDNS'].includes(error.code)
+
+    return res.status(502).json({
+      error: timedOut
+        ? 'Our mail server did not respond in time. Please call dispatch or try again shortly.'
+        : 'Could not send your message. Please call dispatch.'
+    })
+  } finally {
+    // Frees the SMTP socket so the invocation can settle promptly.
+    transporter.close()
   }
 }
