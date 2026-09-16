@@ -18,10 +18,9 @@ export const companyInfo = {
   appLink: 'https://onelink.to/vcq4rn',
   parentBrandLink: 'https://94cabs.com/',
   mapsQuery: 'https://maps.google.com/?q=7460+49+Ave+%238,+Red+Deer,+AB+T4P+1M2,+Canada',
-  /** Placeholder social — replace with live profiles when available */
   social: [
-    { label: 'Facebook', href: 'https://www.facebook.com/', external: true },
-    { label: 'Instagram', href: 'https://www.instagram.com/', external: true }
+    { label: 'Facebook', href: 'https://www.facebook.com/share/1KXJihZPWP/', external: true },
+    { label: 'Instagram', href: 'https://www.instagram.com/94cabsreddeer/', external: true }
   ]
 }
 
