@@ -1,9 +1,40 @@
 <script setup>
+import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import PageBanner from '../components/PageBanner.vue'
 import RevealOnScroll from '../components/RevealOnScroll.vue'
-import TestimonialStrip from '../components/TestimonialStrip.vue'
-import { companyInfo, photoSet, testimonials } from '../data/site'
+import { companyInfo, photoSet } from '../data/site'
+
+const CONTACT_ENDPOINT = '/api/contact'
+
+const formStatus = ref('idle')
+const formError = ref('')
+
+async function submitInquiry(event) {
+  formStatus.value = 'sending'
+  formError.value = ''
+
+  try {
+    const response = await fetch(CONTACT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(event.target)))
+    })
+
+    const payload = await response.json().catch(() => ({}))
+
+    if (!response.ok) {
+      throw new Error(payload.error || `Request failed (${response.status})`)
+    }
+
+    event.target.reset()
+    formStatus.value = 'success'
+  } catch (error) {
+    console.error('Contact form failed:', error)
+    formError.value = error.message
+    formStatus.value = 'error'
+  }
+}
 
 const contactChannels = [
   {
@@ -17,8 +48,7 @@ const contactChannels = [
     eyebrow: 'EMAIL',
     title: 'Written follow-up',
     body: 'Best for corporate accounts, receipt questions, and shuttle planning threads.',
-    primary: { label: companyInfo.email, href: `mailto:${companyInfo.email}` },
-    secondary: { label: companyInfo.mailingEmail, href: `mailto:${companyInfo.mailingEmail}`, prefix: 'Billing alias' }
+    primary: { label: companyInfo.email, href: `mailto:${companyInfo.email}` }
   },
   {
     eyebrow: 'OFFICE',
@@ -48,21 +78,34 @@ const contactChannels = [
       <div class="container contact-channels">
         <RevealOnScroll v-for="(ch, i) in contactChannels" :key="i">
           <article class="contact-channel panel-card hover-lift">
-            <p class="eyebrow" style="color: var(--brand-deep)">{{ ch.eyebrow }}</p>
+            <p class="eyebrow" style="color: var(--brand-deep)">
+              {{ ch.eyebrow }}
+            </p>
+
             <h3>{{ ch.title }}</h3>
             <p>{{ ch.body }}</p>
+
             <a
               class="contact-channel__link"
               :href="ch.primary.href"
               :target="ch.primary.external ? '_blank' : undefined"
               :rel="ch.primary.external ? 'noreferrer' : undefined"
-              >{{ ch.primary.label }}</a
             >
+              {{ ch.primary.label }}
+            </a>
+
             <template v-if="ch.secondary">
-              <p class="contact-channel__sub"><strong>{{ ch.secondary.prefix }}</strong></p>
-              <a class="contact-channel__link" :href="ch.secondary.href">{{ ch.secondary.label }}</a>
+              <p class="contact-channel__sub">
+                <strong>{{ ch.secondary.prefix }}</strong>
+              </p>
+              <a class="contact-channel__link" :href="ch.secondary.href">
+                {{ ch.secondary.label }}
+              </a>
             </template>
-            <p v-if="ch.note" class="contact-channel__note">{{ ch.note }}</p>
+
+            <p v-if="ch.note" class="contact-channel__note">
+              {{ ch.note }}
+            </p>
           </article>
         </RevealOnScroll>
       </div>
@@ -75,26 +118,32 @@ const contactChannels = [
             <p class="eyebrow">PAYMENTS</p>
             <h2>In-vehicle payment options</h2>
             <p class="section-lede">Drivers accept cards, cash and mobile wallets.</p>
+
             <div class="pill-strip contact-pill-strip">
               <span class="pill">Cash</span>
               <span class="pill">Debit / credit</span>
               <span class="pill">Apple Pay</span>
             </div>
+
             <p>Need a receipt for expenses? Ask the driver at drop-off or mention it when booking.</p>
           </article>
         </RevealOnScroll>
+
         <RevealOnScroll>
           <article class="contact-support panel-card hover-lift">
             <h3>Support &amp; response times</h3>
+
             <ul class="contact-support-list">
               <li>
                 <strong>Urgent rides</strong>
                 <span>Phone only — we do not assign from social DMs.</span>
               </li>
+
               <li>
                 <strong>Email</strong>
                 <span>Next business day for most questions; complex accounts may take two cycles.</span>
               </li>
+
               <li>
                 <strong>Form below</strong>
                 <span>Use the form for non-urgent requests without attachments.</span>
@@ -110,36 +159,79 @@ const contactChannels = [
         <RevealOnScroll>
           <article class="contact-form-shell hover-lift">
             <h3>Send a message</h3>
+
             <p class="contact-form-lede">
-              Use this form for non-urgent enquiries.The fields are set up to match what dispatch asks for on a second call.
+              Use this form for non-urgent enquiries. The fields are set up to match what dispatch asks for on a second call.
             </p>
-            <form class="contact-form" @submit.prevent>
+
+            <form class="contact-form" @submit.prevent="submitInquiry">
               <label>
                 Full name *
-                <input type="text" name="name" autocomplete="name" placeholder="Jordan Smith" required />
+                <input
+                  type="text"
+                  name="name"
+                  autocomplete="name"
+                  placeholder="Jordan Smith"
+                  required
+                />
               </label>
+
               <label>
                 Phone *
-                <input type="tel" name="phone" autocomplete="tel" placeholder="403-555-0100" required />
+                <input
+                  type="tel"
+                  name="phone"
+                  autocomplete="tel"
+                  placeholder="403-555-0100"
+                  required
+                />
               </label>
+
               <label>
                 Email *
-                <input type="email" name="email" autocomplete="email" placeholder="you@company.com" required />
+                <input
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="you@company.com"
+                  required
+                />
               </label>
+
               <label>
                 Topic
-                <input type="text" name="subject" placeholder="Corporate account, lost item, …" />
+                <input
+                  type="text"
+                  name="subject"
+                  placeholder="Corporate account, lost item, …"
+                />
               </label>
+
               <label>
-                Message
+                Message *
                 <textarea
                   name="message"
                   rows="6"
                   placeholder="Pickup zones, typical times, accessibility needs…"
                   required
-                />
+                ></textarea>
               </label>
-              <button type="submit" class="btn btn-dark">Submit inquiry</button>
+
+              <button
+                type="submit"
+                class="btn btn-dark"
+                :disabled="formStatus === 'sending'"
+              >
+                {{ formStatus === 'sending' ? 'Sending…' : 'Submit inquiry' }}
+              </button>
+
+              <p v-if="formStatus === 'success'" class="form-success">
+                Thank you — your enquiry has been sent.
+              </p>
+
+              <p v-if="formStatus === 'error'" class="form-error">
+                {{ formError || 'Unable to send right now. Please call dispatch.' }}
+              </p>
             </form>
           </article>
         </RevealOnScroll>
@@ -148,8 +240,17 @@ const contactChannels = [
           <aside class="contact-aside">
             <div class="contact-map card-block hover-lift">
               <h3>Map</h3>
+
               <div class="map-frame">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2439.7912255572483!2d-113.81396782316001!3d52.3016436720048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3545c10d21e1e3%3A0x590aa2c7771afa9e!2s94%20Cabs%20-%20Red%20Deer!5e0!3m2!1sen!2suk!4v1781135959880!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2439.7912255572483!2d-113.81396782316001!3d52.3016436720048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3545c10d21e1e3%3A0x590aa2c7771afa9e!2s94%20Cabs%20-%20Red%20Deer!5e0!3m2!1sen!2suk!4v1781135959880!5m2!1sen!2suk"
+                  width="600"
+                  height="450"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
           </aside>
@@ -318,5 +419,17 @@ const contactChannels = [
   height: 100%;
   border: 0;
   display: block;
+}
+
+.form-success {
+  margin-top: 1rem;
+  color: #1b5926;
+  font-weight: 700;
+}
+
+.form-error {
+  margin-top: 1rem;
+  color: #a61b1b;
+  font-weight: 700;
 }
 </style>
